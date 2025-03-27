@@ -60,7 +60,7 @@ export const SampleGridBottomSheet: FC<PropsWithChildren<{initialType: GridItemT
     };
 
     return (
-        <BottomSheetModal ref={bottomSheetModalRef} onDismiss={onDismiss} backdropComponent={Backdrop}>
+        <BottomSheetModal ref={bottomSheetModalRef} onDismiss={onDismiss} backdropComponent={Backdrop} enableContentPanningGesture={false}>
           <BottomSheetView style={{ height: 600, width: '100%'}}>
               <SegmentedControl
                 ref={segmentedControlRef}

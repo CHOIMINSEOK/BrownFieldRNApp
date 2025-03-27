@@ -130,7 +130,10 @@ const ParentCategoryItem = ({
       onPress={() => onPress(category, rowPosition)}
     >
       <View style={[styles.borderContainer, containerBorderStyle]} />
-      {/* <Image style={styles.categoryImage} source={{ uri: category.imageUrl }} /> */}
+      <Image style={{
+        width: 40,
+        height: 40,
+      }} source={{ uri: category.imageUrl }} />
       <Text
         style={[
           styles.categoryText,
