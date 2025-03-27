@@ -1,8 +1,8 @@
 import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler'
 import { convertCategoryListToGrid, findCategoryRowInGrid } from './sample-grid.calc';
 import { getChildCategoryEntities, getParentCategoryEntities, GridItem, GridItemType } from './grid-model';
-import { SegmentedControl } from './segmented-control';
 import { isNonNullish } from 'remeda';
 
 export const SampleGrid = ({
