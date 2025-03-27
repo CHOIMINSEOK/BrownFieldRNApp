@@ -17,8 +17,8 @@ const GridItemTabTypes = [
 ] as const;
 
 
-export const SampleGridBottomSheet: FC<PropsWithChildren<{initialType: GridItemType, onDismiss: () => void}>> = (props) => {
-    const { initialType, onDismiss } = props;
+export const SampleGridBottomSheet: FC<PropsWithChildren<{initialItem: GridItem, onDismiss: () => void}>> = (props) => {
+    const { initialItem, onDismiss } = props;
     const horizontalViewPagerRef = useRef<FlatList<GridItemType> | null>(null);
 
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -31,9 +31,9 @@ export const SampleGridBottomSheet: FC<PropsWithChildren<{initialType: GridItemT
 
     const isHorizontalViewPagerDragging = useRef<boolean>(false);
 
-    const initialScrollIndex = GridItemTabTypes.indexOf(initialType);
+    const initialScrollIndex = GridItemTabTypes.indexOf(initialItem.type);
 
-    const [selectedCategory, setSelectedCategory] = useState<GridItem | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<GridItem | null>(initialItem);
 
     const gridItemMap = pipe(
         mockGridItems,
@@ -82,7 +82,7 @@ export const SampleGridBottomSheet: FC<PropsWithChildren<{initialType: GridItemT
                         <SampleGrid
                           type={item}
                           allCategories={gridItemMap[item] ?? []}
-                          selectedCategory={selectedCategory}
+                          selectedCategory={item === selectedCategory?.type ? selectedCategory : null}
                           onCategoryClick={setSelectedCategory}
                         /> 
                       </ScrollView>

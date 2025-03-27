@@ -1,5 +1,41 @@
 import { GridItem } from './grid-model';
 
+export const initialSelectedItemTypeA: GridItem = 
+{
+  type: "A",
+  id: "A8",
+  name: "Jewelry",
+  imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
+  children: [],
+  parent: undefined
+}
+
+export const initialSelectedItemTypeB: GridItem =  {
+  type: "B",
+  id: "B14-2",
+  name: "Samsung",
+  imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
+  children: [],
+  parent: {
+    type: "B",
+    id: "B14",
+    name: "Chargers",
+    imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
+    parent: undefined,
+    children: []
+  }
+}
+
+export const initialSelectedItemTypeC: GridItem = {
+  type: "C",
+  id: "C14",
+  name: "Kimchi",
+  imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
+  children: [],
+  parent: undefined
+}
+
+
 export const mockGridItems: GridItem[] = [
   // Type A Items
   {
@@ -58,14 +94,7 @@ export const mockGridItems: GridItem[] = [
     children: [],
     parent: undefined
   },
-  {
-    type: "A",
-    id: "A8",
-    name: "Jewelry",
-    imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
-    children: [],
-    parent: undefined
-  },
+  initialSelectedItemTypeA,
   {
     type: "A",
     id: "A9",
@@ -1210,21 +1239,7 @@ export const mockGridItems: GridItem[] = [
           children: []
         }
       },
-      {
-        type: "B",
-        id: "B14-2",
-        name: "Samsung",
-        imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
-        children: [],
-        parent: {
-          type: "B",
-          id: "B14",
-          name: "Chargers",
-          imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
-          parent: undefined,
-          children: []
-        }
-      },
+      initialSelectedItemTypeB,
       {
         type: "B",
         id: "B14-3",
@@ -2929,14 +2944,7 @@ export const mockGridItems: GridItem[] = [
     children: [],
     parent: undefined
   },
-  {
-    type: "C",
-    id: "C14",
-    name: "Kimchi",
-    imageUrl: "https://cdn.iconscout.com/icon/premium/png-512-thumb/link-3974533-3292858.png",
-    children: [],
-    parent: undefined
-  },
+  initialSelectedItemTypeC,
   {
     type: "C",
     id: "C15",

@@ -3,6 +3,7 @@ import { Pressable, Text, View, StyleSheet, Image } from 'react-native';
 import { convertCategoryListToGrid, findCategoryRowInGrid } from './sample-grid.calc';
 import { getChildCategoryEntities, getParentCategoryEntities, GridItem, GridItemType } from './grid-model';
 import { SegmentedControl } from './segmented-control';
+import { isNonNullish } from 'remeda';
 
 export const SampleGrid = ({
   type,
@@ -22,6 +23,33 @@ export const SampleGrid = ({
   const [selectedParentCategory, setSelectedParentCategory] = useState<GridItem | null>(null);
   const [selectedChildCategory, setSelectedChildCategory] = useState<GridItem | null>(null);
   const [selectedCategoryRowPosition, setSelectedCategoryRowPosition] = useState<number | null>(null);
+
+  useEffect(() => {
+    const 상위_카테고리_유무 = selectedCategory?.parent !== undefined;
+
+    if (상위_카테고리_유무) {
+      setSelectedParentCategory(selectedCategory.parent!!);
+      setSelectedChildCategory(selectedCategory);
+      setSelectedCategoryRowPosition(
+        findCategoryRowInGrid(
+          selectedCategory.parent!!,
+          gridParentCategories
+        )
+      );
+    } else {
+      setSelectedParentCategory(selectedCategory);
+
+      if (isNonNullish(selectedCategory)) {
+        setSelectedCategoryRowPosition(
+          findCategoryRowInGrid(
+            selectedCategory,
+            gridParentCategories
+          )
+        );
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory]);
 
 
   const onClickParentCategory = useCallback(
