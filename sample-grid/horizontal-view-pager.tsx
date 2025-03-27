@@ -43,9 +43,9 @@ import { isEmpty, isNonNullish } from 'remeda';
       setContentHeight(height);
   
       if (initialScrollIndex && Platform.OS === 'android') {
-        // 안드로이드에서는 initialScrollIndex이 제대로 작동하지 않음.
-        // 이를 해결하기 위해 setTimeout을 사용하여 첫번째 아이템이 렌더링된 이후에 스크롤을 시도함.
-        // scrollToIndex 보다 scrollToOffset가 더 안정적임.
+        // There is an intermittent issue where initialScrollIndex fails to work on Android.
+        // To fix this, we use setTimeout to attempt scrolling after the first item is rendered.
+        // scrollToOffset is more stable than scrollToIndex.
         setTimeout(() => {
           (ref as RefObject<FlatList>)?.current?.scrollToOffset({
             offset: width * initialScrollIndex,
